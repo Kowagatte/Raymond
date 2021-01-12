@@ -1,13 +1,14 @@
 package ca.damocles.bicycle
 
+import ca.damocles.collections.Shuffleable
 import kotlin.random.Random
 
 /**
  * A generic 52-card deck of cards.
  */
-class Deck: Shuffleable{
+class Deck: Shuffleable<Card> {
 
-    private val cards: MutableList<Card> = mutableListOf()
+    override val cards: MutableList<Card> = mutableListOf()
 
     /**
      * Fill the 52 card deck with cards.
@@ -41,20 +42,6 @@ class Deck: Shuffleable{
      */
     override fun toString(): String{
         return cards.toString()
-    }
-
-    /**
-     * Fisher-Yates shuffle implementation.
-     */
-    override fun shuffle() {
-        var temp: Card
-        var j: Int
-        for(i in size()-1 downTo 1){
-            j = Random.nextInt(0, i+1)
-            temp = cards[j]
-            cards[j] = cards[i]
-            cards[i] = temp
-        }
     }
 
 }

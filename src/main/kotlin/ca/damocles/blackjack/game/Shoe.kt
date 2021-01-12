@@ -1,14 +1,14 @@
 package ca.damocles.blackjack.game
 
 import ca.damocles.bicycle.Card
-import ca.damocles.bicycle.Shuffleable
+import ca.damocles.collections.Shuffleable
 import ca.damocles.bicycle.Suit
 import ca.damocles.bicycle.Value
 import kotlin.random.Random
 
-class Shoe(numberOfHands: Int): Shuffleable{
+class Shoe(numberOfHands: Int): Shuffleable<Card> {
 
-    private val cards: MutableList<Card> = mutableListOf()
+    override val cards: MutableList<Card> = mutableListOf()
 
     init{
         for(x in 1..numberOfHands){

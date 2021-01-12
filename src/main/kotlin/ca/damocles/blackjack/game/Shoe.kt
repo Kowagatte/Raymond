@@ -4,7 +4,6 @@ import ca.damocles.bicycle.Card
 import ca.damocles.collections.Shuffleable
 import ca.damocles.bicycle.Suit
 import ca.damocles.bicycle.Value
-import kotlin.random.Random
 
 class Shoe(numberOfHands: Int): Shuffleable<Card> {
 
@@ -23,19 +22,5 @@ class Shoe(numberOfHands: Int): Shuffleable<Card> {
     fun size(): Int = cards.size
 
     private fun decksInShoe(): Int = (cards.size/52)
-
-    /**
-     * Fisher-Yates shuffle implementation.
-     */
-    override fun shuffle() {
-        var temp: Card
-        var j: Int
-        for(i in size()-1 downTo 1){
-            j = Random.nextInt(0, i+1)
-            temp = cards[j]
-            cards[j] = cards[i]
-            cards[i] = temp
-        }
-    }
 
 }

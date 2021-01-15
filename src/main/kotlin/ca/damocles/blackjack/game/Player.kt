@@ -1,26 +1,28 @@
 package ca.damocles.blackjack.game
 
 import ca.damocles.bicycle.Card
+import java.util.*
 
 /**
  * Abstract class Player,
  * Represents the player that sits at the blackjack dealer, the dealer or "house" is a player
  * also just with limited playing decisions.
  */
-abstract class Player {
+abstract class Player(val uuid: UUID = UUID.randomUUID(), val hands: MutableList<MutableList<Card>> = mutableListOf(), var currentHandNumber: Int = 0) {
 
     /**
      * Gets a reference to a list of cards representing the currently active hand the player has.
      * @return: a mutable list of cards
      */
-    abstract fun getActiveHand(): MutableList<Card>
+    fun getActiveHand(): MutableList<Card>{
+        return hands[currentHandNumber]
+    }
 
     /**
-     * Gets a reference to a list of hands the player has,
-     * can have multiple hands because a player can split their hands.
-     * @return: a mutable list of mutable lists of cards
+     * Gets the number of hands the Player currently has.
+     * @return: the size of hands, which is the number of hands the player currently has.
      */
-    abstract fun getHands(): MutableList<MutableList<Card>>
+    fun getNumberOfHands(): Int = hands.size
 
     /**
      * This method will gain the playing decision of any given player, including the dealer.
@@ -28,6 +30,7 @@ abstract class Player {
      * @return: the Players playing decision
      */
     abstract fun getPlayingDecision(): PlayingDecision
+
 }
 
 enum class PlayingDecision{

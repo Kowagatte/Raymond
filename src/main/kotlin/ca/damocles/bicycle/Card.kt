@@ -3,29 +3,50 @@ package ca.damocles.bicycle
 /**
  * Basic playing card implementation.
  */
-data class Card(val suit: Suit, val value: Value){
+open class Card(val suit: Suit, val value: Value){
+
+    /**
+     * Compares if the Suit and Value of the given card matches.
+     * @param other: the object to be compared to the Card.
+     * @return: True if the given Card has the same Suit and Value, false otherwise.
+     */
+    override fun equals(other: Any?): Boolean {
+        if(other != null){
+            if(other is Card){
+                if(other.suit == suit && other.value == value){
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
+    /**
+     * Compares if the given Card has the same suit.
+     * @param other: The Card object being compared.
+     * @return: True if the suits are the same. False otherwise.
+     */
+    fun equalSuits(other: Card) = other.suit == suit
+
+    /**
+     * Compares if the given card has the same value.
+     * @param other: the Card object being compared.
+     * @return: True if the values match. False otherwise.
+     */
+    fun equalValue(other: Card): Boolean{
+        TODO("Must compare the values of the cards instead of the literal value")
+        /*
+        For example a 'King' and a 'Jack' have equal value, although they are not the same Value.
+         */
+        return other.value == value
+    }
+
     override fun toString(): String =  "${suit.unicodeValue}${value.simpleRepresentation}"
-}
 
-enum class Suit(val formattedName: String, val charRepresentation: Char, val unicodeValue: String){
-    SPADE("Spade", 's', "\u2660"),
-    CLUB("Club", 'c', "\u2663"),
-    HEART("Heart", 'h', "\u2665"),
-    DIAMOND("Diamond", 'd', "\u2666");
-}
+    override fun hashCode(): Int {
+        var result = suit.hashCode()
+        result = 31 * result + value.hashCode()
+        return result
+    }
 
-enum class Value(val formattedName: String, val simpleRepresentation: String, val values: List<Int>){
-    KING("King", "K", listOf(10)),
-    QUEEN("Queen", "Q", listOf(10)),
-    JACK("Jack", "J", listOf(10)),
-    TEN("Ten", "10", listOf(10)),
-    NINE("Nine", "9", listOf(9)),
-    EIGHT("Eight", "8", listOf(8)),
-    SEVEN("Seven", "7", listOf(7)),
-    SIX("Six", "6", listOf(6)),
-    FIVE("Five", "5", listOf(5)),
-    FOUR("Four", "4", listOf(4)),
-    THREE("Three", "3", listOf(3)),
-    TWO("Two", "2", listOf(2)),
-    ACE("Ace", "A", listOf(1, 11));
 }

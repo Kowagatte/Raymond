@@ -4,23 +4,35 @@ import ca.damocles.bicycle.Card
 import ca.damocles.collections.Shuffleable
 import ca.damocles.bicycle.Suit
 import ca.damocles.bicycle.Value
+import ca.damocles.bicycle.getEmptyDeck
 
-class Shoe(numberOfHands: Int): Shuffleable<Card> {
+/**
+ *
+ */
+class Shoe(numberOfDecks: Int): Shuffleable<Card> {
 
     override val cards: MutableList<Card> = mutableListOf()
 
     init{
-        for(x in 1..numberOfHands){
-            for(suit in Suit.values()){
-                for(value in Value.values()){
-                    cards.add(Card(suit, value))
-                }
-            }
+        for(x in 1..numberOfDecks){
+            cards.addAll(getEmptyDeck())
         }
     }
 
     fun size(): Int = cards.size
 
     private fun decksInShoe(): Int = (cards.size/52)
+
+    /**
+     * Removes the first card in the shoe and returns it.
+     * @return: The Card that was drawn from the shoe.
+     * @throws NoSuchElementException: When calling this method while the shoe is empty.
+     */
+    fun draw(): Card{
+        if(cards.isEmpty()){
+            throw NoSuchElementException("Attempted to draw while the shoe is empty.")
+        }
+        return cards.removeAt(0)
+    }
 
 }

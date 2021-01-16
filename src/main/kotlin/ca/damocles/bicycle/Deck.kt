@@ -8,18 +8,7 @@ import kotlin.random.Random
  */
 class Deck: Shuffleable<Card> {
 
-    override val cards: MutableList<Card> = mutableListOf()
-
-    /**
-     * Fill the 52 card deck with cards.
-     */
-    init{
-        for(suit in Suit.values()){
-            for(value in Value.values()){
-                cards.add(Card(suit, value))
-            }
-        }
-    }
+    override val cards: MutableList<Card> = getEmptyDeck()
 
     /**
      * Cards are drawn from the top of the deck, aka index 0.
@@ -44,4 +33,14 @@ class Deck: Shuffleable<Card> {
         return cards.toString()
     }
 
+}
+
+fun getEmptyDeck(): MutableList<Card>{
+    val cards: MutableList<Card> = mutableListOf()
+    for(suit in Suit.values().dropLast(1)){
+        for(value in Value.values().dropLast(1)){
+            cards.add(Card(suit, value))
+        }
+    }
+    return cards
 }

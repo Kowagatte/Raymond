@@ -1,5 +1,7 @@
 package ca.damocles.blackjack.game
 
+import ca.damocles.blackjack.players.Dealer
+
 class Table(numOfSeats: Int = 5){
 
     /**
@@ -7,7 +9,11 @@ class Table(numOfSeats: Int = 5){
      * Each array index represents a seat at the table.
      * If the value at the given array index is null the seat is empty.
      */
-    val seats: Array<Player?> = arrayOfNulls<Player>(numOfSeats)
+    val seats: Array<Player?> = arrayOfNulls<Player>(numOfSeats+1)
+
+    init{
+        seats[0] = Dealer()
+    }
 
     /**
      * Seats a player at the given seat number.
@@ -26,6 +32,7 @@ class Table(numOfSeats: Int = 5){
             return false
         }
 
+        //If the player is already seated at the table do not seat them again.
         for(player in seats){
             if(player != null){
                 if(player.uuid == player.uuid){
@@ -33,6 +40,7 @@ class Table(numOfSeats: Int = 5){
                 }
             }
         }
+
         seats[seatNumber] = player
         return true
     }

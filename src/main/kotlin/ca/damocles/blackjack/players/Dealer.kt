@@ -1,6 +1,5 @@
 package ca.damocles.blackjack.players
 
-import ca.damocles.bicycle.Card
 import ca.damocles.blackjack.game.Player
 import ca.damocles.blackjack.game.PlayingDecision
 
@@ -12,6 +11,7 @@ class Dealer: Player() {
      * @return: the Players playing decision
      */
     override fun getPlayingDecision(): PlayingDecision {
+        val dealerHand = super.getActiveHand()
         TODO("Not yet implemented")
     }
 

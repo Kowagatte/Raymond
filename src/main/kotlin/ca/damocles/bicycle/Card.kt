@@ -28,17 +28,18 @@ open class Card(val suit: Suit, val value: Value){
      */
     fun equalSuits(other: Card) = other.suit == suit
 
+    fun isAce(): Boolean = equalValue(Value.ACE)
+
     /**
      * Compares if the given card has the same value.
      * @param other: the Card object being compared.
      * @return: True if the values match. False otherwise.
      */
-    fun equalValue(other: Card): Boolean{
-        TODO("Must compare the values of the cards instead of the literal value")
+    fun equalValue(other: Value): Boolean{
         /*
         For example a 'King' and a 'Jack' have equal value, although they are not the same Value.
          */
-        return other.value == value
+        return other == value
     }
 
     override fun toString(): String =  "${suit.unicodeValue}${value.simpleRepresentation}"

@@ -16,8 +16,30 @@ class Hand(val cards: MutableList<Card> = mutableListOf()) {
     }
 
     fun getValue(): Pair<Int, Boolean>{
+        val valueWithoutAces = getNonAceValue()
+        val numberOfAces = getNumberOfAces()
 
-        return Pair(0, false)
+        return if(numberOfAces > 0){
+            if(numberOfAces == 1){
+                if(valueWithoutAces+11 <= 21){
+
+                }
+            }else{
+
+            }
+            Pair(0, true)
+        }else{
+            Pair(valueWithoutAces, false)
+        }
+    }
+
+    fun getNumberOfAces(): Int{
+        val i = 0
+        for(card in cards){
+            if(card.isAce())
+                i.inc()
+        }
+        return i
     }
 
     fun containsAce(): Boolean{

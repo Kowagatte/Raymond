@@ -23,13 +23,15 @@ class Shoe(numberOfDecks: Int): Shuffleable<Card> {
 
     private fun decksInShoe(): Int = (cards.size/52)
 
+    fun isEmpty(): Boolean = cards.isEmpty()
+
     /**
      * Removes the first card in the shoe and returns it.
      * @return: The Card that was drawn from the shoe.
      * @throws NoSuchElementException: When calling this method while the shoe is empty.
      */
     fun draw(): Card{
-        if(cards.isEmpty()){
+        if(isEmpty()){
             throw NoSuchElementException("Attempted to draw while the shoe is empty.")
         }
         return cards.removeAt(0)

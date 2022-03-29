@@ -8,7 +8,9 @@ import java.util.*
  * Represents the player that sits at the blackjack dealer, the dealer or "house" is a player
  * also just with limited playing decisions.
  */
-abstract class Player(val uuid: UUID = UUID.randomUUID(), val hands: MutableList<MutableList<Card>> = mutableListOf(), var currentHandNumber: Int = 0) {
+abstract class Player(val uuid: UUID = UUID.randomUUID(),
+                      private val hands: MutableList<MutableList<Card>> = mutableListOf(),
+                      var currentHandNumber: Int = 0) {
 
     /**
      * Gets a reference to a list of cards representing the currently active hand the player has.

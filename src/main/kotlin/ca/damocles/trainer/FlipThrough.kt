@@ -13,7 +13,7 @@ fun main(){
     IOAccess.io.prompt("How fast should we flip through? (in millis)")
     val speed: Long = IOAccess.io.input().toLong()
 
-    val decks = Shoe(numOfDecks)
+    val decks = Shoe(numOfDecks, 1f)
     decks.shuffle()
 
     val missingCard = decks.draw()

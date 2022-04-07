@@ -6,9 +6,30 @@ import kotlin.random.Random
 /**
  * A generic 52-card deck of cards.
  */
-class Deck: Shuffleable<Card> {
+open class Deck: Shuffleable<Card> {
 
-    override val cards: MutableList<Card> = getEmptyDeck()
+    companion object{
+
+        fun generateCards(i: Int): MutableList<Card>{
+            val cards: MutableList<Card> = mutableListOf()
+            for(x in 1..i){
+
+                for(suit in validSuits){
+                    for(value in validValues){
+                        cards.add(
+                            Card(suit,
+                                value)
+                        )
+                    }
+                }
+            }
+
+            return cards
+        }
+
+    }
+
+    final override var cards: MutableList<Card> = generateCards(1)
 
     /**
      * Cards are drawn from the top of the deck, aka index 0.
@@ -26,6 +47,8 @@ class Deck: Shuffleable<Card> {
      */
     fun size(): Int = cards.size
 
+    fun isEmpty(): Boolean = cards.isEmpty()
+
     /**
      * @returns: Formatted string representing the list of cards.
      */
@@ -35,6 +58,24 @@ class Deck: Shuffleable<Card> {
 
 }
 
+class MultiDeck(numOfDecks: Int): Deck() {
+
+    init{
+        cards = generateCards(numOfDecks)
+    }
+
+}
+
+fun generateSingleDeck(): MutableList<Card> = Deck().cards
+
+fun generateDecks(i: Int): MutableList<Card> {
+    val cards: MutableList<Card> = mutableListOf()
+    for(x in 1..i)
+        cards.addAll(Deck().cards)
+    return cards
+}
+
+@Deprecated("Use generateDecks# instead")
 fun getEmptyDeck(): MutableList<Card>{
     val cards: MutableList<Card> = mutableListOf()
     for(suit in Suit.values().dropLast(1)){

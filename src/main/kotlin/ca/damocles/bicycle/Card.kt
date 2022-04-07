@@ -46,12 +46,14 @@ open class Card(val suit: Suit, val value: Value){
 
     fun complexString(): String = String(Character.toChars(unicodeRepresentation().toInt(16)))
 
-    override fun toString(): String = "${suit.unicodeValue}${value.simpleRepresentation}"
+    override fun toString(): String = "[${suit.unicodeValue}${value.simpleRepresentation}]"
 
     override fun hashCode(): Int {
         var result = suit.hashCode()
         result = 31 * result + value.hashCode()
         return result
     }
+
+    fun emptyCard() = Card(Suit.EMPTY, Value.EMPTY)
 
 }

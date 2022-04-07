@@ -14,5 +14,8 @@ enum class Value(val formattedName: String, val simpleRepresentation: String, va
     THREE("Three", "3","3", listOf(3), 1),
     TWO("Two", "2","2", listOf(2), 1),
     ACE("Ace", "A","1", listOf(1, 11), -1),
-    CUT("", "","", listOf(), 0);
+    CUT("", "","", listOf(), 0),
+    EMPTY("", "", "", listOf(), 0);
 }
+
+val validValues: List<Value> = listOf(Value.KING, Value.QUEEN, Value.JACK, Value.TEN, Value.NINE, Value.EIGHT, Value.SEVEN, Value.SIX, Value.FIVE, Value.FOUR, Value.THREE, Value.TWO, Value.ACE)

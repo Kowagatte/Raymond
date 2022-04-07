@@ -5,5 +5,5 @@ package ca.damocles.blackjack.io
  * Where the program accesses the user.
  */
 object IOAccess {
-    val io: IOForm = ConsoleIO()
+    val io: IOForm = GraphicsIO()
 }

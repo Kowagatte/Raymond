@@ -1,6 +1,6 @@
-package ca.damocles.trainer
+package ca.damocles.trainer.flipthrough
 
-import ca.damocles.blackjack.game.Shoe
+import ca.damocles.bicycle.MultiDeck
 import ca.damocles.blackjack.io.IOAccess
 import java.lang.Thread.sleep
 import kotlin.concurrent.thread
@@ -8,19 +8,22 @@ import kotlin.concurrent.thread
 fun main(){
 
     IOAccess.io.prompt("How many decks to flip through?")
-    val numOfDecks: Int = IOAccess.io.input().toInt()
+    //val numOfDecks: Int = IOAccess.io.input().toInt()
+    val numOfDecks = 1
 
     IOAccess.io.prompt("How fast should we flip through? (in millis)")
-    val speed: Long = IOAccess.io.input().toLong()
+    //val speed: Long = IOAccess.io.input().toLong()
+    val speed = 100L
 
-    val decks = Shoe(numOfDecks, 1f)
+    val decks = MultiDeck(numOfDecks)
+
     decks.shuffle()
 
     val missingCard = decks.draw()
 
     val finalCount: Int = missingCard.value.hiloValue * -1
 
-    IOAccess.io.prompt("Starting to flip through")
+    //IOAccess.io.prompt("Starting to flip through")
     thread{
         var count = 0
         while(true){
@@ -28,10 +31,10 @@ fun main(){
                 break
             val card = decks.draw()
             count += card.value.hiloValue
-            IOAccess.io.prompt(card.complexString())
+            IOAccess.io.prompt(card)
             sleep(speed)
         }
         IOAccess.io.prompt("What is the count?")
-        IOAccess.io.prompt("Your answer: ${IOAccess.io.input()} | Missing Card: ${missingCard.complexString()} | Correct count: $finalCount")
+        IOAccess.io.prompt("Your answer: ${IOAccess.io.input()} | Missing Card: $missingCard | Correct count: $finalCount")
     }
 }

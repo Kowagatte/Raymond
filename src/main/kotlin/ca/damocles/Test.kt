@@ -3,7 +3,7 @@ package ca.damocles
 import ca.damocles.blackjack.io.IOAccess
 
 fun main(){
-    IOAccess.io.prompt("Test")
+    IOAccess.io.print("Test")
     val test = IOAccess.io.input()
-    IOAccess.io.prompt("You wrote: $test")
+    IOAccess.io.print("You wrote: $test")
 }

@@ -2,7 +2,7 @@ package ca.damocles.blackjack.io
 
 class ConsoleIO: IOForm {
 
-    override fun prompt(message: Any) {
+    override fun print(message: Any) {
         println(message)
     }
 

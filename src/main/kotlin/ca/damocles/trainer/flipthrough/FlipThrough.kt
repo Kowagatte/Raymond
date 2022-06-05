@@ -1,18 +1,22 @@
 package ca.damocles.trainer.flipthrough
 
 import ca.damocles.bicycle.MultiDeck
+import ca.damocles.blackjack.io.GraphicsIO
 import ca.damocles.blackjack.io.IOAccess
+import ca.damocles.blackjack.io.IOForm
 import java.lang.Thread.sleep
 import kotlin.concurrent.thread
 
 fun main(){
 
-    IOAccess.io.prompt("How many decks to flip through?")
+    val io: IOForm = GraphicsIO()
+
+    io.print("How many decks to flip through?")
     //val numOfDecks: Int = IOAccess.io.input().toInt()
     val numOfDecks = 1
 
-    IOAccess.io.prompt("How fast should we flip through? (in millis)")
-    //val speed: Long = IOAccess.io.input().toLong()
+    io.print("How fast should we flip through? (in millis)")
+    //val speed: Long = io.input().toLong()
     val speed = 100L
 
     val decks = MultiDeck(numOfDecks)
@@ -31,10 +35,10 @@ fun main(){
                 break
             val card = decks.draw()
             count += card.value.hiloValue
-            IOAccess.io.prompt(card)
+            io.print(card)
             sleep(speed)
         }
-        IOAccess.io.prompt("What is the count?")
-        IOAccess.io.prompt("Your answer: ${IOAccess.io.input()} | Missing Card: $missingCard | Correct count: $finalCount")
+        io.print("What is the count?")
+        io.print("Your answer: ${io.input()} | Missing Card: $missingCard | Correct count: $finalCount")
     }
 }

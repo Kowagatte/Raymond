@@ -7,10 +7,10 @@ package ca.damocles.blackjack.io
 interface IOForm {
 
     /**
-     * Prompts message to the user interface
+     * Prints message to the user interface
      * @param message: the message to send to the user.
      */
-    fun prompt(message: Any)
+    fun print(message: Any)
 
     /**
      * Receives message from the user interface

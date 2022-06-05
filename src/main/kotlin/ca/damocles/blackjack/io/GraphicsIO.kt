@@ -35,7 +35,7 @@ class GraphicsIO: IOForm {
         return ImageIO.read(this.javaClass.getResource("/${showing.suit.formattedName}/${showing.value.simpleRepresentation}.png"));
     }
 
-    override fun prompt(message: Any) {
+    override fun print(message: Any) {
         if(message is Card){
             showing = message
             frame.repaint()

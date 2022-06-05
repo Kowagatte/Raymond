@@ -12,7 +12,7 @@ class RealPlayer: Player() {
      * @return: the Players playing decision
      */
     override fun getPlayingDecision(): PlayingDecision {
-        IOAccess.io.prompt("Your decision? (hit, stand, split, double): ")
+        IOAccess.io.print("Your decision? (hit, stand, split, double): ")
         return PlayingDecision.valueOf(IOAccess.io.input().toUpperCase())
     }
 

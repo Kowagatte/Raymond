@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GDRaymond"
-run/main_scene="res://sims/flipthrough/flipthrough.tscn"
+run/main_scene="res://sims/flipthrough/FlipThrough.tscn"
 config/icon="res://icon.png"
 
 [physics]

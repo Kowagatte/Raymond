@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Q.png-27dbfb636b0834e3c5295c123f65e676.stex"
+path="res://.import/8BitDeckAssets.png-73f1cc0c932ab90c4c5229b3d2a3dafb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/Diamond/Q.png"
-dest_files=[ "res://.import/Q.png-27dbfb636b0834e3c5295c123f65e676.stex" ]
+source_file="res://res/8BitDeckAssets.png"
+dest_files=[ "res://.import/8BitDeckAssets.png-73f1cc0c932ab90c4c5229b3d2a3dafb.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

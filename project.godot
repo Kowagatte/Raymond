@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Card",
 "language": "GDScript",
-"path": "res://sims/flipthrough/card.gd"
+"path": "res://sims/card.gd"
 } ]
 _global_script_class_icons={
 "Card": ""
@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GDRaymond"
-run/main_scene="res://sims/flipthrough/FlipThrough.tscn"
+run/main_scene="res://sims/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [physics]

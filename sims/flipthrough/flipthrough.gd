@@ -46,7 +46,10 @@ func input(inp):
 	if state == FTStates.ASKING:
 		#TODO get response and prompt if correct
 		state = FTStates.RESPONSE
-		label.text = "The correct count was "+str(taken.hilo_value()*-1)
+		if linedit.text == str(taken.hilo_value()*-1):
+			label.text = "Correct!"
+		else:
+			label.text = "Wrong, The correct count was "+str(taken.hilo_value()*-1)
 		pass
 
 func start_timer(delay):
